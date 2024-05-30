@@ -8,6 +8,8 @@
 
         @vite('resources/css/app.css')
         @vite('resources/js/app.js')
+
+        <link rel="stylesheet" href="{{ asset('fontawesome-free-6.5.2-web/css/all.min.css') }}">
     </head>
     <body class="mx-auto mt-10 max-w-2xl bg-slate-200 text-slate-700">
         {{ $slot }}       

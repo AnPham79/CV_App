@@ -42,9 +42,11 @@
             <p class="text-center py-3 font-semibold text-sm">Or login with</p>
 
             <div class="login-with-social grid grid-rows-1 grid-flow-col gap-2">
-                <button class="py-2 border border-slate-500"><a href="">Git</a></button>
-                <button class="py-2 border border-red-500"><a href="">Google</a></button>
+                <button class="py-2 border border-slate-500 hover:bg-black" style="transition: 0.5s"><a href=""><i class="fa-brands fa-github"></i></a></button>
+                <button class="py-2 border border-red-500 text-red-600 hover:bg-red-500 hover:text-white" style="transition: 0.5s"><a href=""><i class="fa-brands fa-google"></i></a></button>
             </div>
+
+            <p class="text-md text-center mt-5">You don't have an account yet ? <a href="{{ route('auth.register') }}" class="text-blue-500 hover:underline">register now</a></p>
         </x-card>
     </div>
 </x-layout>
