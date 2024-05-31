@@ -32,5 +32,7 @@ Route::group(['prefix' => 'auth', 'as' => 'auth.'], function() {
     Route::get('register', [AuthController::class, 'register'])->name('register');
     
     Route::post('process-register', [AuthController::class, 'processRegister'])->name('process-register');
+
+    Route::delete('logout', [AuthController::class, 'logout'])->name('logout');
 });
 
