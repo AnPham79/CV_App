@@ -49,3 +49,15 @@
  - đăng kí
 
  - đăng nhập
+
+ - tạo migrattion job application
+
+ - controller, model, form.
+
+ - create và store job application
+
+ - thêm policies cho job.   
+
+ - thêm logic kiểm tra xem cái job đó mình đã applied chưa.
+
+ - quản lí các công việc bản thân đã apply.

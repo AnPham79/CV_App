@@ -17,7 +17,7 @@ class JobApplicationFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'expected_salary' => fake()->numberBetween(4_000, 170_000)
         ];
     }
 }

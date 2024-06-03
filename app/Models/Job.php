@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Query\Builder as QueryBuilder;
 
 class Job extends Model
@@ -25,6 +27,19 @@ class Job extends Model
         'Mobile',
         'Java Spring Boot'
     ];
+
+    public function jobApplication()
+    {
+        return $this->hasMany(jobApplication::class);
+    }
+
+    public function hasUserApplied(Authenticatable|User|int $user)
+    {
+        return $this->where('id', $this->id)
+            ->whereHas('jobApplication', function($query) use  ($user) {
+                $query->where('user_id', '=', $user->id ?? $user);
+            })->exists();
+    }
 
     public function scopeFilter(Builder | QueryBuilder $query, array $filters)
     {

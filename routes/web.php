@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\JobApplicationController;
+use App\Http\Controllers\MyJobApplicationController;
+use App\Models\JobApplication;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,5 +37,18 @@ Route::group(['prefix' => 'auth', 'as' => 'auth.'], function() {
     Route::post('process-register', [AuthController::class, 'processRegister'])->name('process-register');
 
     Route::delete('logout', [AuthController::class, 'logout'])->name('logout');
+});
+
+
+Route::middleware('auth')->group(function() {
+    Route::resource('job.application', JobApplicationController::class)
+    ->only([
+        'create', 'store'
+    ]);
+
+    Route::resource('my-job-applications', MyJobApplicationController::class)
+    ->only([
+        'index', 'destroy'
+    ]);
 });
 
