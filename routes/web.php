@@ -40,15 +40,11 @@ Route::group(['prefix' => 'auth', 'as' => 'auth.'], function() {
 });
 
 
-Route::middleware('auth')->group(function() {
+Route::middleware('auth')->group(function () {
     Route::resource('job.application', JobApplicationController::class)
-    ->only([
-        'create', 'store'
-    ]);
+        ->only(['create', 'store']);
 
     Route::resource('my-job-applications', MyJobApplicationController::class)
-    ->only([
-        'index', 'destroy'
-    ]);
+        ->only(['index', 'destroy']);
 });
 

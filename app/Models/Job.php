@@ -28,17 +28,13 @@ class Job extends Model
         'Java Spring Boot'
     ];
 
-    public function jobApplication()
-    {
-        return $this->hasMany(jobApplication::class);
-    }
-
-    public function hasUserApplied(Authenticatable|User|int $user)
+    public function hasUserApplied(Authenticatable|User|int $user): bool
     {
         return $this->where('id', $this->id)
-            ->whereHas('jobApplication', function($query) use  ($user) {
-                $query->where('user_id', '=', $user->id ?? $user);
-            })->exists();
+            ->whereHas(
+                'jobApplications',
+                fn($query) => $query->where('user_id', '=', $user->id ?? $user)
+            )->exists();
     }
 
     public function scopeFilter(Builder | QueryBuilder $query, array $filters)
@@ -61,8 +57,13 @@ class Job extends Model
         });
     }
 
-    public function employer()
+    public function employer(): BelongsTo
     {
         return $this->belongsTo(Employer::class);
+    }
+
+    public function jobApplications(): HasMany
+    {
+        return $this->hasMany(jobApplication::class);
     }
 }

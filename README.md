@@ -61,3 +61,13 @@
  - thêm logic kiểm tra xem cái job đó mình đã applied chưa.
 
  - quản lí các công việc bản thân đã apply.
+
+ - đếm số công việc đã apply
+
+ - số lương trung bình mà mình đã apply vào các công ty
+
+ - số lượng những người khác cũng apply công việc này
+
+ - hủy apply
+
+ - File Uploads: Understanding File System & Configuring Disks

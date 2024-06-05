@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use App\Models\JobApplication; // Đảm bảo bạn đã nhập model này
+use App\Models\JobApplication;
 
 class User extends Authenticatable
 {
@@ -30,12 +30,12 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function employer()
+    public function employer(): HasOne
     {
         return $this->hasOne(Employer::class);
     }
 
-    public function jobApplications()
+    public function jobApplications(): HasMany
     {
         return $this->hasMany(JobApplication::class);
     }
