@@ -12,7 +12,9 @@ class JobApplication extends Model
 
     public $fillable = [
         'user_id',
-        'expected_salary'
+        'expected_salary',
+        'job_id',
+        'cv_path'
     ];
 
     public function job()

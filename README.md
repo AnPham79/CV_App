@@ -71,3 +71,12 @@
  - hủy apply
 
  - File Uploads: Understanding File System & Configuring Disks
+
+ - vào filesystem tạo 1 'private'
+    => [
+        'driver' => 'local',
+        'root' => storage_path('app\private),
+        'visibility' => 'private'
+    ]
+
+ 
