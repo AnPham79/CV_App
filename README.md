@@ -79,4 +79,13 @@
         'visibility' => 'private'
     ]
 
+- thêm sửa job của bản thân
+
+- thêm middleware kiểm tra đã đăng nhập chưa mới đc thêm
+
+- nếu chưa đăng gì thì chuyển đến trang thêm
+
+- thêm polici cho job
+
+- xóa mềm
  

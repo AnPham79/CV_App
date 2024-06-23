@@ -27,7 +27,15 @@
               <div>${{ number_format($application->expected_salary) }}</div>
             </div>
 
-            <a href="" class="font-bold text-sm">Edit</a>
+            <div class="flex">
+                <a href="{{ route('my-jobs.edit', $job) }}" class="font-bold text-sm">Edit</a>
+
+                <form class="mx-2" action="{{ route('my-jobs.destroy', $job) }}" method="POST">
+                  @csrf
+                  @method('DELETE')
+                  <button class="font-bold text-sm">Delete</button>
+                </form>
+            </div>
           @empty
             <div>No applications yet</div>
           @endforelse

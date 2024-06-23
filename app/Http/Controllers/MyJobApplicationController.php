@@ -11,23 +11,22 @@ class MyJobApplicationController extends Controller
 {
     public function index()
     {
-        return view(
-            'my_job_applications.index', 
-            [
-                'jobApplications' => auth()->user()
-                    ->jobApplications()
-                    ->with([
-                        'job' => function ($query) {
-                            $query->withCount('jobApplications')
-                                  ->withAvg('jobApplications', 'expected_salary');
-                        },
-                        'job.employer'
-                    ])
-                    ->latest()
-                    ->get()
-            ]
-        );
+        $jobApplications = JobApplication::where('user_id', auth()->id())->with([
+            'job' => function ($query) {
+                $query->withCount('jobApplications')
+                    ->withTrashed()
+                    ->withAvg('jobApplications', 'expected_salary');
+            },
+            'job.employer'
+        ])
+        ->latest()
+        ->get();
+
+        return view('my_job_applications.index', [
+            'jobApplications' => $jobApplications
+        ]);
     }
+
 
     public function destroy(JobApplication $myJobApplication)
     {

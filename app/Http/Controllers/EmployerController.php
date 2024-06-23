@@ -11,28 +11,12 @@ class EmployerController extends Controller
     {
         $this->authorizeResource(Employer::class);
     }
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view('employer.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
+    
     public function store(Request $request)
     {
-        auth()->user()->employer()->create(
+        $employer = Employer::where('user_id', auth()->user())->get();
+
+        $employer->create(
             $request->validate([
                 'company_name' => 'required|unique:employers,company_name'
             ])
